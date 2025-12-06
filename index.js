@@ -128,6 +128,12 @@ app.delete("/api/clothes/:id", async (req, res) => {
   }
 });
 
+// simple health check
+app.get("/api/health", (_req, res) => {
+  res.json({ ok: true, env: process.env.NODE_ENV || "development" });
+});
+
+
 app.use("/", express.static(path.join(__dirname, "public")));
 
 app.listen(PORT, () => console.log(`API listening on ${PORT}`));
